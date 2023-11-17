@@ -27,6 +27,8 @@ Actions:
     Configuration:
       # Required - Steps are sequential instructions that run shell commands
       Steps:
+        - Run: export CI=1
+        - Run: npm ci
         - Run: npx amplify pipeline-deploy --branch main --app-id d2x02w7vgaw7u6
     Compute:
       Type: EC2
@@ -53,6 +55,8 @@ Actions:
     Configuration:
       # Required - Steps are sequential instructions that run shell commands
       Steps:
+        - Run: export CI=1
+        - Run: npm ci
         - Run: npx amplify pipeline-deploy --branch main --app-id d1xy55b19m2n01
     Compute:
       Type: EC2
