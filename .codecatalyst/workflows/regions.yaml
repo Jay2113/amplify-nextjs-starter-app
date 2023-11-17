@@ -27,7 +27,6 @@ Actions:
     Configuration:
       # Required - Steps are sequential instructions that run shell commands
       Steps:
-        - Run: nvm use 18
         - Run: npm ci
         - Run: npx amplify pipeline-deploy --branch main --app-id d2x02w7vgaw7u6
     Compute:
@@ -55,7 +54,6 @@ Actions:
     Configuration:
       # Required - Steps are sequential instructions that run shell commands
       Steps:
-        - Run: nvm use 18
         - Run: npm ci
         - Run: npx amplify pipeline-deploy --branch main --app-id dddve6mz4qkz6
     Compute:
