@@ -29,7 +29,7 @@ Actions:
       Steps:
         - Run: export CI=1
         - Run: npm ci
-        - Run: npx amplify pipeline-deploy --branch main --app-id d153xj16j3xvv8
+        - Run: npx amplify pipeline-deploy --branch main --app-id dddve6mz4qkz6
         - Run: curl -X POST -d {} "https://webhooks.amplify.us-west-2.amazonaws.com/prod/webhooks?id=a9d266b6-104d-46d5-a7ab-a52f0ea917d7&token=PrkyikJMbyv1HU64nczGAaCe6y6Z7ISQzsVSUiug&operation=startbuild" -H "Content-Type:application/json"
     Compute:
       Type: EC2
