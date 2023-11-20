@@ -36,7 +36,8 @@ Actions:
       Steps:
         - Run: export CI=1
         - Run: npm ci
-        - Run: npx amplify pipeline-deploy --branch $AWS_BRANCH --app-id $AWS_APP_ID_STAGING
+        - Run: npx amplify pipeline-deploy --branch $AWS_BRANCH --app-id
+            $AWS_APP_ID_STAGING
         - Run: if [ $AWS_BRANCH = "main" ]; then curl -X POST -d {}
             "https://webhooks.amplify.us-west-2.amazonaws.com/prod/webhooks?id=a9d266b6-104d-46d5-a7ab-a52f0ea917d7&token=PrkyikJMbyv1HU64nczGAaCe6y6Z7ISQzsVSUiug&operation=startbuild"
             -H "Content-Type:application/json"; fi
@@ -47,33 +48,3 @@ Actions:
         - Role: quokka-web-app-nko7x
           Name: jay
       Name: staging
-  Build_c8:
-    # Identifies the action. Do not modify this value.
-    Identifier: aws/build@v1.0.0
-    # Specifies the source and/or artifacts to pass to the action as input.
-    Inputs:
-      # Optional
-      Sources:
-        - WorkflowSource # This specifies that the action requires this Workflow as a source
-    Outputs:
-      # Optional; Automatically discover reports for popular test frameworks
-      AutoDiscoverReports:
-        Enabled: true
-        # Use as prefix for the report files
-        ReportNamePrefix: rpt
-    # Defines the action's properties.
-    Configuration:
-      # Required - Steps are sequential instructions that run shell commands
-      Steps:
-        - Run: export CI=1
-        - Run: npm ci
-        - Run: npx amplify pipeline-deploy --branch $AWS_BRANCH --app-id $AWS_APP_ID_PRODUCTION
-    Compute:
-      Type: EC2
-    DependsOn:
-      - Build_82
-    Environment:
-      Connections:
-        - Role: JayTest
-          Name: nikhil
-      Name: prod
